@@ -1,4 +1,5 @@
 import type { GameDefinition } from "@codequest/games-sdk";
+import { CodeBreaker } from "./codebreaker/definition";
 import { HelloGame } from "./hello-game/definition";
 import { CalculatorLab } from "./calculator-lab/definition";
 
@@ -13,6 +14,7 @@ import { CalculatorLab } from "./calculator-lab/definition";
  * The lobby reads this registry directly. No other UI code needs to change to add a game.
  */
 export const games: GameDefinition[] = [
+  CodeBreaker,
   HelloGame,
   CalculatorLab,
 ];
