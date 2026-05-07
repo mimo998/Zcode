@@ -1,0 +1,25 @@
+{
+  "name": "codequest",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Educational game platform for high school CS — minigames, AI mentor, teacher dashboard.",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter @codequest/web dev",
+    "dev:api": "pnpm --filter @codequest/api dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "prettier": "^3.2.5",
+    "eslint": "^8.57.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
