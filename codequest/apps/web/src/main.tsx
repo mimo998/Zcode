@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import { LoginForm, SignupForm } from "./Auth";
+import { LoginForm, SignupForm } from "./auth";
 import "./index.css";
 
 const rootEl = document.getElementById("root");

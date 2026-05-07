@@ -1,7 +1,7 @@
 import { Elysia } from "elysia";
 import { node } from "@elysiajs/node";
 import { cors } from "@elysiajs/cors";
-import { authRoutes } from "./Auth.js";
+import { authRoutes } from "./auth.js";
 
 const PORT = Number(process.env.PORT ?? 3001);
 const CORS_ORIGIN = process.env.CORS_ORIGIN ?? "http://localhost:5173";
@@ -11,11 +11,10 @@ const startedAt = Date.now();
 const app = new Elysia({ adapter: node() })
   .use(
     cors({
-      origin: CORS_ORIGIN,
+      origin: "http://localhost:5173",
       credentials: true,
     }),
   )
-  // Tiny request logger
   .onRequest(({ request }) => {
     const url = new URL(request.url);
     console.log(`→ ${request.method} ${url.pathname}`);
@@ -25,7 +24,6 @@ const app = new Elysia({ adapter: node() })
     service: "codequest-api",
     uptime: Math.floor((Date.now() - startedAt) / 1000),
   }))
-  // The web app proxies /api/* to this server in dev
   .group("/api", (api) =>
     api
       .get("/health", () => ({
