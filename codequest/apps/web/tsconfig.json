@@ -7,8 +7,11 @@
     "noEmit": true,
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "baseUrl": "."
+    }
   },
   "include": ["src", "vite.config.ts"]
 }
+
+
+
+

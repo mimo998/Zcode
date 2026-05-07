@@ -90,8 +90,8 @@ export const MISSIONS: MissionLevel[] = [
 // Adjust both values until the display reads: 100
 // ═══════════════════════════════════════════
 
-let diamond_weight = 50;  // adjust this →
-let gold_bars      = 30;  // adjust this →
+let diamond_weight = 50;  // ← CHANGE THIS
+let gold_bars      = 30;  // ← CHANGE THIS
 
 // The vault computes the total automatically:
 let total = diamond_weight + gold_bars;
@@ -145,7 +145,7 @@ console.log("Security code:", total, "/ 100");`,
 let hour = 23;            // heist time: 11 pm
 let camera_status = "ALERT";
 
-if (hour < 22) {          // ← this operator is wrong — fix it
+if (hour < 22) {          // ← CHANGE THIS (wrong operator)
   camera_status = "sleeping";
 } else {
   camera_status = "ALERT! INTRUDER!";
@@ -191,7 +191,7 @@ console.log("Camera status:", camera_status);`,
 
 let locks_opened = 0;
 
-for (let i = 0; i < 5; i++) {  // ← change 5 → open all 10
+for (let i = 0; i < 5; i++) {  // ← CHANGE THIS (change the limit)
   locks_opened = locks_opened + 1;
 }
 
@@ -234,8 +234,8 @@ console.log("Locks opened:", locks_opened, "/ 10");`,
 // ════════════════════════════════════════════
 
 function fly_drone(distance) {
-  // Calculate flight time here.
-  // If 1m = 2s, what's the formula for any distance?
+  // ← CHANGE THIS: return the flight time
+  // Rule: 1 metre = 2 seconds. What is the formula?
 
 }
 
@@ -308,7 +308,7 @@ let player_power  = 35;
 let shield_active = true;
 let rounds        = 0;
 
-// YOUR BATTLE CODE HERE:
+// ← CHANGE THIS: write your while loop below
 
 
 console.log("Robot HP:", robot_health, "| Rounds:", rounds);`,

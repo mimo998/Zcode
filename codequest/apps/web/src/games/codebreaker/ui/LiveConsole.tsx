@@ -256,7 +256,7 @@ export function LiveConsole({ scene, liveData, runResult }: LiveConsoleProps) {
       </div>
 
       {/* Log entries */}
-      <div className="overflow-y-auto p-3 space-y-0.5" style={{ maxHeight: "9rem" }}>
+      <div className="overflow-y-auto p-2.5 space-y-0.5" style={{ maxHeight: "5.5rem" }}>
         {allEntries.map((entry, i) => (
           <div key={i} className="flex gap-2 font-mono text-xs leading-5">
             <span className={`shrink-0 ${TAG_COLORS[entry.type]}`}>

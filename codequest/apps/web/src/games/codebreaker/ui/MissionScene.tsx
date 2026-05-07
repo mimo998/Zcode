@@ -114,7 +114,7 @@ function VaultScene({ status, liveData }: SceneProps) {
         }}
       >
         {/* Vault door */}
-        <div className="relative w-52 h-40 bg-slate-900 rounded-lg border-4 border-slate-600 overflow-hidden">
+        <div className="relative w-44 h-28 bg-slate-900 rounded-lg border-4 border-slate-600 overflow-hidden">
           {/* Left door half */}
           <div
             className={`absolute left-0 top-0 bottom-0 w-[50.5%] flex flex-col justify-between py-2 px-1.5 transition-transform duration-700 ease-in-out ${
@@ -162,9 +162,9 @@ function VaultScene({ status, liveData }: SceneProps) {
           {/* Combination dial */}
           {!open && (
             <div className="absolute inset-0 flex items-center justify-center z-20">
-              <div className="relative w-14 h-14">
+              <div className="relative w-10 h-10">
                 <div
-                  className="w-full h-full rounded-full border-4 border-slate-400 bg-slate-700 transition-none"
+                  className="w-full h-full rounded-full border-4 border-slate-400 bg-slate-700"
                   style={{
                     transform: `rotate(${dialAngle}deg)`,
                     transition: "transform 0.4s ease-out",
@@ -173,8 +173,8 @@ function VaultScene({ status, liveData }: SceneProps) {
                     borderColor: preUnlock ? "rgb(52,211,153)" : undefined,
                   }}
                 />
-                <div className="absolute top-1 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-slate-200 rounded-full" />
-                <div className="absolute inset-2 rounded-full border-2 border-slate-500" />
+                <div className="absolute top-0.5 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-slate-200 rounded-full" />
+                <div className="absolute inset-1.5 rounded-full border-2 border-slate-500" />
               </div>
             </div>
           )}
@@ -187,8 +187,8 @@ function VaultScene({ status, liveData }: SceneProps) {
             style={{ transitionDelay: open ? "400ms" : "0ms" }}
           >
             <div
-              className="text-6xl animate-bounce"
-              style={{ filter: "drop-shadow(0 0 20px rgba(147,197,253,0.9))" }}
+              className="text-4xl animate-bounce"
+              style={{ filter: "drop-shadow(0 0 16px rgba(147,197,253,0.9))" }}
             >
               💎
             </div>
@@ -220,7 +220,7 @@ function VaultScene({ status, liveData }: SceneProps) {
 
       {/* Live progress bar */}
       {hasValues && !open && (
-        <div className="relative z-10 w-52 flex flex-col gap-1">
+        <div className="relative z-10 w-44 flex flex-col gap-1">
           <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
             <div
               className={`h-full rounded-full transition-all duration-500 ${progressColor}`}
