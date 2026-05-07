@@ -7,13 +7,13 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      // Imported games (e.g. CodeBreaker) reference this package — point it at our shim.
+      "@codequest/games-sdk": path.resolve(__dirname, "./src/games-sdk"),
     },
   },
   server: {
     port: 5173,
     proxy: {
-      // Proxy /api requests to the backend during dev so the frontend can call /api/*
-      // without worrying about CORS or absolute URLs.
       "/api": {
         target: "http://localhost:3001",
         changeOrigin: true,

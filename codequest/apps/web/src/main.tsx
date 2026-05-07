@@ -6,8 +6,10 @@ import TeacherDashboard from "./pages/teacherdashboard";
 import { CreateGame } from "./pages/creategame";
 import ProfilePage from "./pages/ProfilePage";
 import AdminPage from "./pages/AdminPage";
-import { LoginForm, SignupForm, AuthProvider, RequireAuth } from "./auth";
 import FixTheLoopGame from "./games/FixTheLoopGame";
+import StudentSessionsPage from "./pages/StudentSessionsPage";
+import CodeBreakerPage from "./pages/CodeBreakerPage";
+import { LoginForm, SignupForm, AuthProvider, RequireAuth } from "./auth";
 import "./index.css";
 
 const rootEl = document.getElementById("root");
@@ -23,6 +25,23 @@ ReactDOM.createRoot(rootEl).render(
           <Route path="/signup" element={<SignupForm />} />
 
           <Route
+            path="/play/fix-the-loop"
+            element={
+              <RequireAuth roles={["student"]}>
+                <FixTheLoopGame />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/play/codebreaker"
+            element={
+              <RequireAuth roles={["student"]}>
+                <CodeBreakerPage />
+              </RequireAuth>
+            }
+          />
+
+          <Route
             path="/profile"
             element={
               <RequireAuth roles={["student"]}>
@@ -30,12 +49,19 @@ ReactDOM.createRoot(rootEl).render(
               </RequireAuth>
             }
           />
-
           <Route
             path="/teacher/dashboard"
             element={
               <RequireAuth roles={["teacher"]}>
                 <TeacherDashboard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/teacher/students/:studentId/sessions"
+            element={
+              <RequireAuth roles={["teacher", "admin"]}>
+                <StudentSessionsPage />
               </RequireAuth>
             }
           />
@@ -47,21 +73,11 @@ ReactDOM.createRoot(rootEl).render(
               </RequireAuth>
             }
           />
-
           <Route
             path="/admin"
             element={
               <RequireAuth roles={["admin"]}>
                 <AdminPage />
-              </RequireAuth>
-            }
-          />
-
-          <Route
-            path="/play/fix-the-loop"
-            element={
-              <RequireAuth roles={["student"]}>
-                <FixTheLoopGame />
               </RequireAuth>
             }
           />
