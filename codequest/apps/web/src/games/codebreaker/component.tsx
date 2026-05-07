@@ -6,6 +6,7 @@ import { analyzeError } from "./engine/errorAnalyzer";
 import { MissionScene, type SceneStatus } from "./ui/MissionScene";
 import { HintSystem } from "./ui/HintSystem";
 import { RewardOverlay } from "./ui/RewardOverlay";
+import { LiveConsole } from "./ui/LiveConsole";
 
 // ─── Hacker terminal component ────────────────────────────────────────────────
 function HackerTerminal({
@@ -149,6 +150,7 @@ export const CodeBreakerComponent: React.FC<GameProps> = ({
 
   // Per-level state
   const [code, setCode] = useState(mission?.starterCode ?? "");
+  const [liveData, setLiveData] = useState<Record<string, unknown>>({});
   const [runResult, setRunResult] = useState<RunResult | null>(null);
   const [attempts, setAttempts] = useState(0);
   const [hintsRevealed, setHintsRevealed] = useState(0);
@@ -170,6 +172,7 @@ export const CodeBreakerComponent: React.FC<GameProps> = ({
   useEffect(() => {
     if (mission) {
       setCode(mission.starterCode);
+      setLiveData({});
       setRunResult(null);
       setAttempts(0);
       setHintsRevealed(0);
@@ -179,6 +182,15 @@ export const CodeBreakerComponent: React.FC<GameProps> = ({
       setShaking(false);
     }
   }, [level]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Debounced live extraction — updates the scene and console as student types
+  useEffect(() => {
+    if (!mission) return;
+    const timer = setTimeout(() => {
+      setLiveData(mission.liveExtract(code));
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [code, mission]);
 
   // All missions done
   if (!mission) {
@@ -321,7 +333,7 @@ export const CodeBreakerComponent: React.FC<GameProps> = ({
         className="shrink-0 w-full relative"
         style={{ height: "clamp(180px, 38vh, 340px)" }}
       >
-        <MissionScene scene={mission.scene} status={sceneStatus} />
+        <MissionScene scene={mission.scene} status={sceneStatus} liveData={liveData} />
 
         {/* Mission progress pill */}
         <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/50 border border-white/10 text-xs font-mono">
@@ -371,6 +383,11 @@ export const CodeBreakerComponent: React.FC<GameProps> = ({
               onChange={setCode}
               shaking={shaking}
             />
+          </div>
+
+          {/* Security console — live reactive feed */}
+          <div className="shrink-0">
+            <LiveConsole scene={mission.scene} liveData={liveData} runResult={runResult} />
           </div>
 
           {/* Error / output panel */}
