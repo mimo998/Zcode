@@ -11,7 +11,8 @@
     "lint": "eslint src",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "db:push": "drizzle-kit push"
   },
   "dependencies": {
     "@codequest/shared": "workspace:*",
@@ -20,7 +21,7 @@
     "@elysiajs/node": "^1.4.0",
     "@elysiajs/swagger": "^1.3.0",
     "bcrypt": "^6.0.0",
-    "drizzle-orm": "^0.30.0",
+    "drizzle-orm": "^0.45.2",
     "elysia": "^1.4.0",
     "jsonwebtoken": "^9.0.3",
     "pg": "^8.11.0",
@@ -29,9 +30,10 @@
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
     "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^20.12.0",
+    "@types/node": "^25.6.1",
     "@types/pg": "^8.11.0",
-    "drizzle-kit": "^0.20.0",
+    "dotenv": "^17.4.2",
+    "drizzle-kit": "^0.31.10",
     "tsx": "^4.7.0",
     "typescript": "^5.4.0"
   }

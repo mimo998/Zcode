@@ -2,6 +2,7 @@ import { Elysia } from "elysia";
 import { node } from "@elysiajs/node";
 import { cors } from "@elysiajs/cors";
 import { authRoutes } from "./auth.js";
+import { teacherRoutes } from "./teacher.js";
 
 const PORT = Number(process.env.PORT ?? 3001);
 const CORS_ORIGIN = process.env.CORS_ORIGIN ?? "http://localhost:5173";
@@ -32,6 +33,7 @@ const app = new Elysia({ adapter: node() })
         uptime: Math.floor((Date.now() - startedAt) / 1000),
       }))
       .use(authRoutes)
+      .use(teacherRoutes)
   )
   .listen(PORT, ({ hostname, port }) => {
     console.log(`🦊 codequest-api listening on http://${hostname}:${port}`);

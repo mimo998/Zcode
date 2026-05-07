@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import TeacherDashboard from "./pages/teacherdashboard";
+import {CreateGame} from "./pages/creategame";
 import { LoginForm, SignupForm } from "./auth";
 import "./index.css";
 
@@ -14,9 +16,12 @@ ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginForm onBack={() => window.location.href = "/"} />} />
         <Route path="/signup" element={<SignupForm onBack={() => window.location.href = "/"} />} />
+        <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
+        <Route path="/teacher/create-game" element={<CreateGame />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
