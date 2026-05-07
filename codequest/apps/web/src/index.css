@@ -2,6 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Theme tokens. Tweak these to change the whole app's look without touching components.
+ * Values are deliberately neutral — easy to adjust per the team's visual taste later.
+ */
+:root {
+  /* Surfaces */
+  --color-bg: #f7f6f2;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f1efe8;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-strong: rgba(0, 0, 0, 0.14);
+
+  /* Text */
+  --color-text: #1a1a18;
+  --color-text-muted: #5f5e5a;
+  --color-text-subtle: #888780;
+
+  /* Accents — used sparingly. The platform is primarily neutral. */
+  --color-accent: #534ab7;
+  --color-accent-bg: #eeedfe;
+  --color-accent-text: #26215c;
+
+  --color-success: #0f6e56;
+  --color-success-bg: #e1f5ee;
+  --color-success-text: #085041;
+
+  --color-info: #185fa5;
+  --color-info-bg: #e6f1fb;
+  --color-info-text: #0c447c;
+
+  --color-warning: #854f0b;
+  --color-warning-bg: #faeeda;
+  --color-warning-text: #633806;
+
+  --color-pink: #993556;
+  --color-pink-bg: #fbeaf0;
+  --color-pink-text: #72243e;
+
+  /* Layout */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
 html,
 body,
 #root {
@@ -10,6 +54,8 @@ body,
 
 body {
   margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family:
     Inter,
     ui-sans-serif,
@@ -20,4 +66,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular numbers for stats — keeps streak/XP from jittering as values change */
+.nums {
+  font-variant-numeric: tabular-nums;
 }
