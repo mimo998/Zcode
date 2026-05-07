@@ -2,8 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * CSS custom properties for components that use var() directly
+ * (e.g. PlaceholderGame). Tailwind utility classes are preferred for
+ * everything in the lobby; these variables exist for cross-cutting use.
+ */
 :root {
   color-scheme: light;
+
+  --color-bg: #f7f6f2;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f1efe8;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-strong: rgba(0, 0, 0, 0.14);
+
+  --color-text: #1a1a18;
+  --color-text-muted: #5f5e5a;
+  --color-text-subtle: #888780;
+
+  --color-accent: #534ab7;
+  --color-accent-bg: #eeedfe;
+  --color-accent-text: #26215c;
+
+  --color-success: #0f6e56;
+  --color-success-bg: #e1f5ee;
+
+  --color-warning: #854f0b;
+  --color-warning-bg: #faeeda;
+
+  --color-pink: #993556;
+  --color-pink-bg: #fbeaf0;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
 }
 
 html,
@@ -24,4 +56,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.nums {
+  font-variant-numeric: tabular-nums;
 }

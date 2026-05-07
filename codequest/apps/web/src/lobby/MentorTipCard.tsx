@@ -1,5 +1,8 @@
+import { mockMentorTip } from "../lib/mockData";
+
 /**
- * Placeholder for the per-student mentor tip. Real content arrives in #11.
+ * Shows the AI mentor's most recent tip for this student.
+ * Real content streams from POST /api/mentor/message — wired up in #8 + #9.
  */
 export function MentorTipCard() {
   return (
@@ -12,21 +15,18 @@ export function MentorTipCard() {
           <h2 className="text-sm font-semibold text-purple-ink">AI Mentor</h2>
         </div>
         <span className="rounded-full bg-purple/10 px-2.5 py-0.5 text-xs font-medium text-purple-ink">
-          Coming soon
+          Beta
         </span>
       </header>
 
-      <p className="text-sm leading-relaxed text-ink-muted">
-        Your mentor will surface a personalised tip here once you start playing — based
-        on where you're stuck, not a generic message.
-      </p>
-
-      <div className="flex items-center gap-2 rounded-xl bg-white/60 px-3 py-2">
-        <span className="text-sm">💡</span>
-        <p className="text-xs text-ink-muted italic">
-          "Great engineers get stuck. The skill is knowing what to try next."
-        </p>
+      <div className="flex items-start gap-2 rounded-xl bg-white/60 px-3 py-3">
+        <span className="mt-0.5 text-sm">💡</span>
+        <p className="text-sm leading-relaxed text-ink-muted italic">{mockMentorTip}</p>
       </div>
+
+      <p className="text-xs text-ink-faint">
+        Based on your last session · updated after each play
+      </p>
     </section>
   );
 }

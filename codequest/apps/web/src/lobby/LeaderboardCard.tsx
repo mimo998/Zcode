@@ -1,3 +1,5 @@
+import { mockLeaderboard } from "../lib/mockData";
+
 /**
  * Placeholder leaderboard. Real data lands with teacher dashboard (#10).
  */
@@ -43,9 +45,14 @@ export function LeaderboardCard() {
         ))}
       </ul>
 
-      <p className="text-center text-xs text-ink-faint">
-        Scores update daily after you play
-      </p>
+      <div className="rounded-xl bg-accent-soft px-3 py-2 text-center">
+        <p className="text-xs text-accent-ink font-medium">
+          You're #{mockLeaderboard.rank} out of {mockLeaderboard.totalStudents} students
+        </p>
+        <p className="text-xs text-ink-faint mt-0.5">
+          {mockLeaderboard.xpBehindNext} XP behind #{mockLeaderboard.rank - 1}
+        </p>
+      </div>
     </section>
   );
 }
