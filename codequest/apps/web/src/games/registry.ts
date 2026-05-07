@@ -1,4 +1,6 @@
 import type { GameDefinition } from "@codequest/games-sdk";
+import { HelloGame } from "./hello-game/definition";
+import { CalculatorLab } from "./calculator-lab/definition";
 
 /**
  * The registry of all minigames available in the lobby.
@@ -11,10 +13,8 @@ import type { GameDefinition } from "@codequest/games-sdk";
  * The lobby reads this registry directly. No other UI code needs to change to add a game.
  */
 export const games: GameDefinition[] = [
-  // Maze Runner — placeholder, to be implemented (issue #?)
-  // Calculator Lab — placeholder
-  // Arduino Workshop — placeholder
-  // 3D Print Studio — placeholder
+  HelloGame,
+  CalculatorLab,
 ];
 
 export function findGame(id: string): GameDefinition | undefined {
