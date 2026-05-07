@@ -1,6 +1,28 @@
-import { integer, text, boolean, timestamp, pgTable, serial, varchar, json } from "drizzle-orm/pg-core";
+import { integer, text, boolean, timestamp, pgTable, serial, varchar, json, pgEnum } from "drizzle-orm/pg-core";
 
-// Teachers Table
+/* ------------------------------------------------------------------ */
+/*  Unified users table with role-based access (NEW)                   */
+/* ------------------------------------------------------------------ */
+
+export const userRoleEnum = pgEnum("user_role", ["student", "teacher", "admin"]);
+
+export const users = pgTable("users", {
+  id: serial("id").primaryKey(),
+  email: varchar("email", { length: 255 }).notNull().unique(),
+  name: varchar("name", { length: 255 }).notNull(),
+  passwordHash: varchar("password_hash", { length: 255 }).notNull(),
+  role: userRoleEnum("role").notNull().default("student"),
+  // Optional teacher link for students
+  teacherId: integer("teacher_id"),
+  totalScore: integer("total_score").default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+/* ------------------------------------------------------------------ */
+/*  Legacy tables — kept for migration compatibility. Plan: backfill   */
+/*  these into `users` and drop in a follow-up migration.              */
+/* ------------------------------------------------------------------ */
+
 export const teachers = pgTable("teachers", {
   id: serial("id").primaryKey(),
   email: varchar("email", { length: 255 }).notNull().unique(),
@@ -9,7 +31,6 @@ export const teachers = pgTable("teachers", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
-// Students Table
 export const students = pgTable("students", {
   id: serial("id").primaryKey(),
   email: varchar("email", { length: 255 }).notNull().unique(),
@@ -20,19 +41,17 @@ export const students = pgTable("students", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
-// Games Table (משחקים שהמורה יוצר)
 export const games = pgTable("games", {
   id: serial("id").primaryKey(),
   teacherId: integer("teacher_id").notNull().references(() => teachers.id),
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description"),
-  content: json("content").notNull(), // {questions, answers, etc}
+  content: json("content").notNull(),
   isPublished: boolean("is_published").default(false),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
 
-// Student Game Access (הרשאה לתלמיד לשחק משחק)
 export const studentGameAccess = pgTable("student_game_access", {
   id: serial("id").primaryKey(),
   studentId: integer("student_id").notNull().references(() => students.id),
@@ -40,7 +59,6 @@ export const studentGameAccess = pgTable("student_game_access", {
   assignedAt: timestamp("assigned_at").notNull().defaultNow(),
 });
 
-// Game Attempts (ניסיונות)
 export const gameAttempts = pgTable("game_attempts", {
   id: serial("id").primaryKey(),
   studentId: integer("student_id").notNull().references(() => students.id),
