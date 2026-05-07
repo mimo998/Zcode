@@ -1,7 +1,7 @@
 import { Elysia } from "elysia";
 import { node } from "@elysiajs/node";
 import { cors } from "@elysiajs/cors";
-import { authRoutes } from "./auth.js";
+import { authRoutes } from "./Auth.js";
 
 const PORT = Number(process.env.PORT ?? 3001);
 const CORS_ORIGIN = process.env.CORS_ORIGIN ?? "http://localhost:5173";
