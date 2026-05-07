@@ -1,4 +1,5 @@
 import type { GameDefinition } from "@codequest/games-sdk";
+import { helloGame } from "./hello-game";
 
 /**
  * The registry of all minigames available in the lobby.
@@ -11,7 +12,8 @@ import type { GameDefinition } from "@codequest/games-sdk";
  * The lobby reads this registry directly. No other UI code needs to change to add a game.
  */
 export const games: GameDefinition[] = [
-  // Maze Runner — placeholder, to be implemented (issue #?)
+  helloGame,
+  // Maze Runner — placeholder, to be implemented (issue #13)
   // Calculator Lab — placeholder
   // Arduino Workshop — placeholder
   // 3D Print Studio — placeholder
