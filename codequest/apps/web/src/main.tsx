@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
+import { LoginForm, SignupForm } from "./Auth";
 import "./index.css";
 
 const rootEl = document.getElementById("root");
@@ -10,6 +12,12 @@ if (!rootEl) {
 
 ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/login" element={<LoginForm onBack={() => window.location.href = "/"} />} />
+        <Route path="/signup" element={<SignupForm onBack={() => window.location.href = "/"} />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 );

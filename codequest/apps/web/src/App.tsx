@@ -1,28 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { LoginForm, SignupForm } from "./Auth";
 
-type ApiHealth = { ok: boolean; service: string; uptime: number };
+type Page = "home" | "login" | "signup";
 
 export default function App() {
-  const [health, setHealth] = useState<ApiHealth | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState<Page>("home");
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/health")
-      .then((r) => {
-        if (!r.ok) throw new Error(`API returned ${r.status}`);
-        return r.json() as Promise<ApiHealth>;
-      })
-      .then((data) => {
-        if (!cancelled) setHealth(data);
-      })
-      .catch((e: unknown) => {
-        if (!cancelled) setError(e instanceof Error ? e.message : String(e));
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  if (page === "login") {
+    return <LoginForm onBack={() => setPage("home")} />;
+  }
+
+  if (page === "signup") {
+    return <SignupForm onBack={() => setPage("home")} />;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-neutral-50 text-neutral-900">
@@ -34,31 +24,22 @@ export default function App() {
           <h1 className="text-xl font-semibold">CodeQuest</h1>
         </div>
         <p className="text-neutral-600 mb-6">
-          The platform skeleton is running. This page only exists to prove the stack works
-          end-to-end. The real lobby UI is{" "}
-          <a
-            href="https://github.com"
-            className="text-indigo-600 underline underline-offset-2"
-          >
-            issue #5
-          </a>
-          .
+          The platform skeleton is running.
         </p>
 
-        <div className="rounded-lg border border-neutral-200 p-4 text-sm">
-          <p className="font-medium mb-2">API health check</p>
-          {!health && !error && <p className="text-neutral-500">Pinging /api/health…</p>}
-          {error && (
-            <p className="text-red-600">
-              Couldn&apos;t reach the API: {error}. Is{" "}
-              <code className="px-1 bg-neutral-100 rounded">pnpm dev:api</code> running?
-            </p>
-          )}
-          {health && (
-            <pre className="text-neutral-700 whitespace-pre-wrap">
-              {JSON.stringify(health, null, 2)}
-            </pre>
-          )}
+        <div className="flex gap-3">
+          <button
+            onClick={() => setPage("login")}
+            className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium"
+          >
+            Login
+          </button>
+          <button
+            onClick={() => setPage("signup")}
+            className="flex-1 px-4 py-2 bg-neutral-200 text-neutral-900 rounded-lg hover:bg-neutral-300 font-medium"
+          >
+            Signup
+          </button>
         </div>
       </div>
     </div>
