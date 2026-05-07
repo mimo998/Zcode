@@ -11,12 +11,14 @@ interface Props {
 export function GameGrid({ games, progressByGame }: Props) {
   if (games.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-border p-10 text-center text-ink-muted">
-        No games registered yet. Add one in{" "}
-        <code className="rounded bg-surface-sunken px-1.5 py-0.5 text-xs">
-          apps/web/src/games/registry.ts
-        </code>
-        .
+      <div className="rounded-2xl border border-dashed border-border p-12 text-center">
+        <p className="text-sm text-ink-muted">No games registered yet.</p>
+        <p className="mt-1 text-xs text-ink-faint">
+          Add one in{" "}
+          <code className="rounded bg-surface-sunken px-1.5 py-0.5">
+            apps/web/src/games/registry.ts
+          </code>
+        </p>
       </div>
     );
   }

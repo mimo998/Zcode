@@ -1,7 +1,13 @@
 /**
- * Placeholder leaderboard for the lobby sidebar. Real data lands with the
- * teacher dashboard endpoints (issue #10).
+ * Placeholder leaderboard. Real data lands with teacher dashboard (#10).
  */
+const medals = ["🥇", "🥈", "🥉"];
+const medalColors = [
+  "bg-amber-soft text-amber-ink",
+  "bg-surface-sunken text-ink-muted",
+  "bg-coral-soft text-coral-ink",
+];
+
 const placeholderRows = [
   { rank: 1, name: "—", xp: 0 },
   { rank: 2, name: "—", xp: 0 },
@@ -10,31 +16,36 @@ const placeholderRows = [
 
 export function LeaderboardCard() {
   return (
-    <section className="flex flex-col gap-3 rounded-2xl bg-surface-raised p-5 shadow-card">
+    <section className="flex flex-col gap-4 rounded-2xl bg-surface-raised p-5 shadow-card">
       <header className="flex items-center justify-between">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-ink-muted">
-          Class leaderboard
-        </h2>
+        <h2 className="text-sm font-semibold text-ink">Class leaderboard</h2>
         <span className="text-xs text-ink-faint">This week</span>
       </header>
+
       <ul className="flex flex-col gap-2">
-        {placeholderRows.map((row) => (
+        {placeholderRows.map((row, i) => (
           <li
             key={row.rank}
-            className="flex items-center justify-between rounded-xl bg-surface-sunken px-3 py-2"
+            className="flex items-center justify-between rounded-xl bg-surface-sunken px-3 py-2.5"
           >
             <div className="flex items-center gap-3">
-              <span className="grid h-6 w-6 place-items-center rounded-full bg-surface-raised text-xs font-semibold text-ink-muted">
-                {row.rank}
+              <span
+                className={`grid h-7 w-7 place-items-center rounded-lg text-sm ${medalColors[i] ?? "bg-surface-sunken text-ink-muted"}`}
+              >
+                {medals[i] ?? row.rank}
               </span>
-              <span className="text-sm">{row.name}</span>
+              <span className="text-sm font-medium text-ink">{row.name}</span>
             </div>
-            <span className="text-sm font-medium text-ink-muted">
+            <span className="text-xs font-semibold tabular-nums text-ink-muted">
               {row.xp} XP
             </span>
           </li>
         ))}
       </ul>
+
+      <p className="text-center text-xs text-ink-faint">
+        Scores update daily after you play
+      </p>
     </section>
   );
 }

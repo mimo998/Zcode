@@ -6,42 +6,58 @@ interface Props {
 
 export function LobbyHeader({ student }: Props) {
   return (
-    <header className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-surface-raised p-5 shadow-card">
-      <div className="flex items-center gap-4">
-        <div className="grid h-12 w-12 place-items-center rounded-full bg-accent-soft font-semibold text-accent-ink">
-          {student.initials}
+    <header className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 p-6 text-white shadow-card">
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <div className="relative">
+            <div className="grid h-14 w-14 place-items-center rounded-full bg-indigo-500/20 ring-2 ring-indigo-400/40 text-lg font-bold tracking-tight">
+              {student.initials}
+            </div>
+            <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-slate-900 bg-emerald-400" />
+          </div>
+          <div>
+            <p className="text-sm text-slate-400">{student.className}</p>
+            <p className="text-xl font-semibold">{student.displayName}</p>
+          </div>
         </div>
-        <div>
-          <p className="text-sm text-ink-muted">{student.className}</p>
-          <p className="text-lg font-semibold">{student.displayName}</p>
+
+        <div className="flex items-center gap-2">
+          <StatBadge emoji="⚡" label="XP" value={student.totalXp} color="indigo" />
+          <StatBadge emoji="🔥" label="Streak" value={`${student.streakDays}d`} color="amber" />
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
-        <Stat label="XP" value={student.totalXp} accent="bg-accent-soft text-accent-ink" />
-        <Stat
-          label="Streak"
-          value={`${student.streakDays}d`}
-          accent="bg-amber-soft text-amber-ink"
-        />
-      </div>
+      {/* decorative background blobs */}
+      <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-indigo-500/10" />
+      <div className="pointer-events-none absolute -bottom-6 right-24 h-28 w-28 rounded-full bg-purple-500/10" />
     </header>
   );
 }
 
-function Stat({
+function StatBadge({
+  emoji,
   label,
   value,
-  accent,
+  color,
 }: {
+  emoji: string;
   label: string;
   value: string | number;
-  accent: string;
+  color: "indigo" | "amber";
 }) {
+  const colors = {
+    indigo: "bg-indigo-500/20 ring-indigo-500/30 text-indigo-200",
+    amber: "bg-amber-500/20 ring-amber-500/30 text-amber-200",
+  };
   return (
-    <div className={`flex items-center gap-2 rounded-xl px-3 py-2 ${accent}`}>
-      <span className="text-xs uppercase tracking-wide opacity-70">{label}</span>
-      <span className="text-lg font-semibold">{value}</span>
+    <div
+      className={`flex items-center gap-2 rounded-xl px-3.5 py-2 ring-1 ${colors[color]}`}
+    >
+      <span className="text-base leading-none">{emoji}</span>
+      <div className="flex flex-col leading-none">
+        <span className="text-[10px] uppercase tracking-widest opacity-60">{label}</span>
+        <span className="text-lg font-semibold">{value}</span>
+      </div>
     </div>
   );
 }
