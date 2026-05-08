@@ -91,7 +91,7 @@ function Hero({
         {user ? (
           <>
             <p className="text-emerald-400 font-black text-sm tracking-widest uppercase mb-2">Welcome back</p>
-            <h2 className="text-4xl md:text-5xl font-black mb-3 leading-tight">{user.name} 👋</h2>
+            <h2 className="text-4xl md:text-5xl font-black mb-3 leading-tight">{user.name}</h2>
             <p className="text-zinc-400 text-lg mb-6 max-w-xl">
               Pick up where you left off, or explore new games waiting for you.
             </p>
