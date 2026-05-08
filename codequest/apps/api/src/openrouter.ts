@@ -7,7 +7,7 @@ const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
 const API_KEY = process.env.OPENROUTER_API_KEY;
 const MODEL = process.env.OPENROUTER_MODEL ?? "openrouter/auto";
-const APP_NAME = "CodeQuest";
+const APP_NAME = "ZCode";
 const APP_URL = process.env.APP_URL ?? "http://localhost:5173";
 
 export interface ChatMessage {

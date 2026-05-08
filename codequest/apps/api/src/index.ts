@@ -17,14 +17,14 @@ const app = new Elysia({ adapter: node() })
   })
   .get("/health", () => ({
     ok: true,
-    service: "codequest-api",
+    service: "zcode-api",
     uptime: Math.floor((Date.now() - startedAt) / 1000),
   }))
   .group("/api", (api) =>
     api
       .get("/health", () => ({
         ok: true,
-        service: "codequest-api",
+        service: "zcode-api",
         uptime: Math.floor((Date.now() - startedAt) / 1000),
       }))
       .use(authRoutes)
@@ -33,7 +33,7 @@ const app = new Elysia({ adapter: node() })
       .use(sessionRoutes),
   )
   .listen(PORT, ({ hostname, port }) => {
-    console.log(`🦊 codequest-api listening on http://${hostname}:${port}`);
+    console.log(`🦊 zcode-api listening on http://${hostname}:${port}`);
   });
 
 export type App = typeof app;

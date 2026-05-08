@@ -16,10 +16,8 @@ export function AppShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-50 bg-zinc-900/95 backdrop-blur border-b border-zinc-800">
         <div className="flex items-center justify-between px-5 h-14">
           <Link to={user ? homeForRole(user.role) : "/"} className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-sky-500 flex items-center justify-center font-black text-zinc-950 shadow-md">
-              CQ
-            </div>
-            <span className="text-lg font-black tracking-tight">CodeQuest</span>
+            <img src="/games/zcode-icon.png" alt="ZCode" className="w-9 h-9 rounded-lg object-cover shadow-md" />
+            <span className="text-lg font-black tracking-tight">ZCode</span>
           </Link>
 
           <div className="hidden md:flex flex-1 max-w-md mx-6">

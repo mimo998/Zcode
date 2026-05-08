@@ -280,10 +280,8 @@ function AuthShell({
           ← Back
         </button>
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-400 to-sky-500 flex items-center justify-center font-black text-zinc-950 text-lg shadow-lg">
-            CQ
-          </div>
-          <h1 className="text-2xl font-black tracking-tight">CodeQuest</h1>
+          <img src="/games/zcode-icon.png" alt="ZCode" className="w-11 h-11 rounded-xl object-cover shadow-lg" />
+          <h1 className="text-2xl font-black tracking-tight">ZCode</h1>
         </div>
         <h2 className="text-xl font-bold mb-6 text-zinc-300">{title}</h2>
         {children}

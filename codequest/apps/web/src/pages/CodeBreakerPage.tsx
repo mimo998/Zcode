@@ -233,7 +233,7 @@ function CodeBreakerPageInner() {
                 🦉
               </div>
               <div>
-                <div className="font-black">CodeQuest Mentor</div>
+                <div className="font-black">ZCode Mentor</div>
                 <div className="text-[10px] font-black uppercase tracking-wider text-zinc-500">AI Hint</div>
               </div>
             </div>
