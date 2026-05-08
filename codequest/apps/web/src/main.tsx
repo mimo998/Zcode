@@ -9,6 +9,7 @@ import AdminPage from "./pages/AdminPage";
 import FixTheLoopGame from "./games/FixTheLoopGame";
 import StudentSessionsPage from "./pages/StudentSessionsPage";
 import CodeBreakerPage from "./pages/CodeBreakerPage";
+import CodeRunnerPage from "./pages/CodeRunnerPage";
 import { LoginForm, SignupForm, AuthProvider, RequireAuth } from "./auth";
 import "./index.css";
 
@@ -37,6 +38,14 @@ ReactDOM.createRoot(rootEl).render(
             element={
               <RequireAuth roles={["student"]}>
                 <CodeBreakerPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/play/coderunner"
+            element={
+              <RequireAuth roles={["student"]}>
+                <CodeRunnerPage />
               </RequireAuth>
             }
           />

@@ -22,6 +22,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ─── CodeRunner code-editor color rules ──────────────────────────────────── */
+
+.code-locked {
+  color: #64748b !important;
+}
+
+.code-editable-number {
+  color: #22d3ee !important;
+  font-weight: 700;
+}
+
 /* ─── Game animations (used by CodeBreaker) ───────────────────────────────── */
 
 @keyframes shake {

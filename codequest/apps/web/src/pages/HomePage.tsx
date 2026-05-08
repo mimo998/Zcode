@@ -17,6 +17,7 @@ interface Game {
 
 const GAMES: Game[] = [
   { id: "0",  slug: "codebreaker",       title: "CodeBreaker: Diamond Heist", category: "Code", emoji: "💎", difficulty: "Medium", players: 4200, accent: "from-purple-500 via-fuchsia-500 to-pink-500", path: "/play/codebreaker" },
+  { id: "00", slug: "coderunner",        title: "CodeRunner",         category: "Code",    emoji: "🏎️", difficulty: "Medium", players: 3100, accent: "from-cyan-500 via-sky-500 to-blue-600", path: "/play/coderunner" },
   { id: "1",  slug: "array-basics",      title: "Array Basics",     category: "Code",    emoji: "🔵", difficulty: "Easy",   players: 2840, accent: "from-blue-500 to-cyan-500" },
   { id: "2",  slug: "loop-master",       title: "Fix the Loop",     category: "Code",    emoji: "🔴", difficulty: "Easy",   players: 1920, accent: "from-red-500 to-orange-500", path: "/play/fix-the-loop" },
   { id: "3",  slug: "recursion-quest",   title: "Recursion Quest",  category: "Code",    emoji: "🟡", difficulty: "Hard",   players: 760,  accent: "from-yellow-400 to-amber-500" },
