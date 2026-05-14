@@ -1,4 +1,4 @@
-# CodeQuest
+# Zcode
 
 Educational game platform for high school CS. Students learn algorithms, hardware, and 3D modeling by playing minigames with an AI mentor; teachers track progress through a dashboard.
 
